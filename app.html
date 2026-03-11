@@ -1,150 +1,34 @@
-<html lang="en" data-theme="dark"><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="csrf-token" content="VCU-NRAPBxwbMH4dThpAIDQaCiR-PREE0SVCWAm_ri4mzLqTnucTJGPC">
-    <script>
-      (function() {
-        var stored = localStorage.getItem("theme");
-        var theme = stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-        document.documentElement.setAttribute("data-theme", theme);
-      })();
-    </script>
-    <title data-default="ColorGuesser">ColorGuesser</title>
-    <meta name="description" content="Guess the color by name! A daily color guessing game with CIE94 color scoring.">
-    <meta property="og:title" content="ColorGuesser">
-    <meta property="og:description" content="Guess the color by name! A daily color guessing game.">
-    <meta property="og:image" content="/og.png">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ColorGuesser">
-    <meta name="twitter:description" content="Guess the color by name! A daily color guessing game.">
-    <meta name="twitter:image" content="/og.png">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link phx-track-static="" rel="stylesheet" href="/assets/css/app-00060405284c5e14bb5c4c3adfaadfd0.css?vsn=d">
-    <script defer="" phx-track-static="" type="text/javascript" src="/assets/js/app-0e096bf0b54b3dc4234755871f33249e.js?vsn=d"> </script>
-  <!-- Privacy-friendly analytics by Plausible -->
-  <script async="" src="https://plausible.io/js/pa-WC99PLHVk-l7DXdqHr8pl.js"></script>
-  <script>
-    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-    plausible.init()
-  </script>
-  </head>
-  <body class="min-h-screen bg-base-100">
-<div id="phx-GJvjiO3oZy1lLOeB" data-phx-main="" data-phx-session="SFMyNTY.g2gDaAJhBnQAAAAIZAACaWRtAAAAFHBoeC1HSnZqaU8zb1p5MWxMT2VCZAARbGl2ZV9zZXNzaW9uX25hbWVkAARnYW1lZAAKcGFyZW50X3BpZGQAA25pbGQACHJvb3RfcGlkZAADbmlsZAAJcm9vdF92aWV3ZAAfRWxpeGlyLkNvbG9yR3Vlc3NlcldlYi5HYW1lTGl2ZWQABnJvdXRlcmQAHUVsaXhpci5Db2xvckd1ZXNzZXJXZWIuUm91dGVyZAAHc2Vzc2lvbnQAAAAAZAAEdmlld2QAH0VsaXhpci5Db2xvckd1ZXNzZXJXZWIuR2FtZUxpdmVuBgA7ZpjenAFiAAFRgA.3j8DPlCrjIGPw4RisBycLr3xfeZ7sbMocI_rUW6HsA4" data-phx-static="SFMyNTY.g2gDaAJhBnQAAAADZAAKYXNzaWduX25ld2wAAAABZAANY3VycmVudF9zY29wZWpkAAVmbGFzaHQAAAAAZAACaWRtAAAAFHBoeC1HSnZqaU8zb1p5MWxMT2VCbgYAO2aY3pwBYgABUYA.qy-f1dLT5TI12RLoQcG0PYbrlXGYrw3BttIMev17vN0" class="phx-connected" data-phx-root-id="phx-GJvjiO3oZy1lLOeB"><nav class="fixed top-0 left-0 right-0 z-50 bg-base-100/95 backdrop-blur-sm border-b border-base-200">
-  <div class="flex max-w-sm mx-auto items-stretch">
-    <a href="/" class="flex-1 flex flex-col items-center gap-1 pt-3 pb-2 transition-colors relative text-base-content">
-      <span class="hero-calendar-days size-6" data-phx-id="m1-phx-GJvjiO3oZy1lLOeB"></span>
-      <span class="hidden sm:block text-xs font-medium">Daily</span>
-      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 rounded-full bg-base-content transition-opacity opacity-100"></div>
-    </a>
-    <a href="/opposite" class="flex-1 flex flex-col items-center gap-1 pt-3 pb-2 transition-colors relative text-base-content/30 hover:text-base-content/60">
-      <span class="hero-arrows-right-left size-6" data-phx-id="m2-phx-GJvjiO3oZy1lLOeB"></span>
-      <span class="hidden sm:block text-xs font-medium">Opposite</span>
-      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 rounded-full bg-base-content transition-opacity opacity-0"></div>
-    </a>
-    <a href="/infinite" class="flex-1 flex flex-col items-center gap-1 pt-3 pb-2 transition-colors relative text-base-content/30 hover:text-base-content/60">
-      <span class="hero-arrow-path size-6" data-phx-id="m3-phx-GJvjiO3oZy1lLOeB"></span>
-      <span class="hidden sm:block text-xs font-medium">Infinite</span>
-      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 rounded-full bg-base-content transition-opacity opacity-0"></div>
-    </a>
-    <a href="/stats" class="flex-1 flex flex-col items-center gap-1 pt-3 pb-2 transition-colors relative text-base-content/30 hover:text-base-content/60">
-      <span class="hero-chart-bar size-6" data-phx-id="m4-phx-GJvjiO3oZy1lLOeB"></span>
-      <span class="hidden sm:block text-xs font-medium">Stats</span>
-      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 rounded-full bg-base-content transition-opacity opacity-0"></div>
-    </a>
-    <button id="theme-toggle" class="flex items-center px-3 text-base-content/30 hover:text-base-content/70 transition-colors" title="Toggle theme">
-      <span class="hero-sun-micro size-4 [[data-theme=dark]_&amp;]:hidden" data-phx-id="m5-phx-GJvjiO3oZy1lLOeB"></span>
-      <span class="hero-moon-micro size-4 hidden [[data-theme=dark]_&amp;]:block" data-phx-id="m6-phx-GJvjiO3oZy1lLOeB"></span>
-    </button>
-  </div>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ColorGuesser</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+</head>
 
-<main class="px-4 pt-20 pb-8 sm:px-6">
-  <div class="mx-auto max-w-sm">
-    <div id="guest-tracker" phx-hook="GuestId" class="hidden"></div>
-<div class="flex flex-col items-center gap-8 py-2">
+<body>
 
-    <form id="guess-form" phx-submit="reveal" class="flex flex-col items-center gap-6 w-full">
-      <div class="flex gap-2 items-center">
+<div class="container">
 
-          <div class="rounded-full transition-all duration-300 w-3 h-3 bg-base-content"></div>
+<div id="progress"></div>
 
-          <div class="rounded-full transition-all duration-300 w-2 h-2 bg-base-300"></div>
+<h2 id="color-name">Guess the Color</h2>
 
-          <div class="rounded-full transition-all duration-300 w-2 h-2 bg-base-300"></div>
+<div id="picker"></div>
 
-          <div class="rounded-full transition-all duration-300 w-2 h-2 bg-base-300"></div>
+<p id="hex-display">#000000</p>
 
-          <div class="rounded-full transition-all duration-300 w-2 h-2 bg-base-300"></div>
+<button id="reveal">Reveal</button>
 
-      </div>
+<div id="result"></div>
 
-      <h2 id="color-name" class="text-3xl font-bold tracking-tight text-center px-2 transition-colors duration-75 leading-tight" style="color: #808080">
-Willow Grove
-      </h2>
-
-      <div id="color-picker" phx-update="ignore" phx-hook="ColorPicker" class="w-full flex flex-col items-center">
-        <div class="iro-mount" data-iro-ready="1"><div class="IroColorPicker" id="" style="display: block;"><div class="IroWheel" style="width: 260px; height: 260px; position: relative; overflow: visible; display: block;"><div class="IroWheelHue" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; border-radius: 50%; box-sizing: border-box; transform: rotateZ(90deg); background: conic-gradient(red, magenta, blue, aqua, lime, yellow, red);"></div><div class="IroWheelSaturation" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; border-radius: 50%; box-sizing: border-box; background: radial-gradient(circle closest-side, rgb(255, 255, 255), transparent);"></div><div class="IroWheelLightness" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; border-radius: 50%; box-sizing: border-box; background: rgb(0, 0, 0); opacity: 0;"></div><div class="IroWheelBorder" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; border-radius: 50%; box-sizing: border-box; border: 0px solid rgb(255, 255, 255);"></div><svg class="IroHandle IroHandle--0 IroHandle--isActive" style="transform: translate(130px, 130px); will-change: transform; top: -9px; left: -9px; width: 18px; height: 18px; position: absolute; overflow: visible;"><circle cx="9" cy="9" r="9" fill="none" stroke-width="2" stroke="#000"></circle><circle cx="9" cy="9" r="7" fill="hsl(0, 0%, 100%)" stroke-width="2" stroke="#fff"></circle></svg></div><div class="IroSlider" style="position: relative; width: 260px; height: 28px; border-radius: 14px; background: conic-gradient(rgb(204, 204, 204) 25%, rgb(255, 255, 255) 0deg, rgb(255, 255, 255) 50%, rgb(204, 204, 204) 0deg, rgb(204, 204, 204) 75%, rgb(255, 255, 255) 0deg) 0% 0% / 8px 8px; overflow: visible; display: block; margin-top: 16px;"><div class="IroSliderGradient" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; border-radius: 14px; background: linear-gradient(to right, rgb(0, 0, 0) 0%, rgb(255, 255, 255) 100%); box-sizing: border-box; border: 0px solid rgb(255, 255, 255);"></div><svg class="IroHandle IroHandle--0 IroHandle--isActive" style="transform: translate(246px, 14px); will-change: transform; top: -9px; left: -9px; width: 18px; height: 18px; position: absolute; overflow: visible;"><circle cx="9" cy="9" r="9" fill="none" stroke-width="2" stroke="#000"></circle><circle cx="9" cy="9" r="7" fill="none" stroke-width="2" stroke="#fff"></circle></svg></div></div></div>
-        <input type="hidden" name="color" value="#808080">
-      </div>
-
-      <p id="hex-display" class="text-sm font-mono text-base-content/40 -mt-2">#808080</p>
-
-      <button type="submit" class="btn-game max-w-xs">
-        Reveal
-      </button>
-    </form>
-
-
+<button id="next" style="display:none;">Next Color</button>
 
 </div>
-  </div>
-</main>
 
-<div id="flash-group" aria-live="polite" data-phx-id="m7-phx-GJvjiO3oZy1lLOeB">
-  
-  
+<script src="colornames.json"></script>
+<script src="game.js"></script>
 
-  <div id="client-error" phx-click="[[&quot;push&quot;,{&quot;event&quot;:&quot;lv:clear-flash&quot;,&quot;value&quot;:{&quot;key&quot;:&quot;error&quot;}}],[&quot;hide&quot;,{&quot;time&quot;:200,&quot;to&quot;:&quot;#client-error&quot;,&quot;transition&quot;:[[&quot;transition-all&quot;,&quot;ease-in&quot;,&quot;duration-200&quot;],[&quot;opacity-100&quot;,&quot;translate-y-0&quot;,&quot;sm:scale-100&quot;],[&quot;opacity-0&quot;,&quot;translate-y-4&quot;,&quot;sm:translate-y-0&quot;,&quot;sm:scale-95&quot;]]}]]" role="alert" class="toast toast-top toast-end z-50" hidden="" phx-connected="[[&quot;hide&quot;,{&quot;time&quot;:200,&quot;to&quot;:&quot;#client-error&quot;,&quot;transition&quot;:[[&quot;transition-all&quot;,&quot;ease-in&quot;,&quot;duration-200&quot;],[&quot;opacity-100&quot;,&quot;translate-y-0&quot;,&quot;sm:scale-100&quot;],[&quot;opacity-0&quot;,&quot;translate-y-4&quot;,&quot;sm:translate-y-0&quot;,&quot;sm:scale-95&quot;]]}],[&quot;set_attr&quot;,{&quot;attr&quot;:[&quot;hidden&quot;,&quot;&quot;]}]]" phx-disconnected="[[&quot;show&quot;,{&quot;time&quot;:300,&quot;to&quot;:&quot;.phx-client-error #client-error&quot;,&quot;transition&quot;:[[&quot;transition-all&quot;,&quot;ease-out&quot;,&quot;duration-300&quot;],[&quot;opacity-0&quot;,&quot;translate-y-4&quot;,&quot;sm:translate-y-0&quot;,&quot;sm:scale-95&quot;],[&quot;opacity-100&quot;,&quot;translate-y-0&quot;,&quot;sm:scale-100&quot;]]}],[&quot;remove_attr&quot;,{&quot;attr&quot;:&quot;hidden&quot;}]]">
-  <div class="alert w-80 sm:w-96 max-w-80 sm:max-w-96 text-wrap alert-error">
-    
-    <span class="hero-exclamation-circle size-5 shrink-0" data-phx-id="m8-phx-GJvjiO3oZy1lLOeB"></span>
-    <div>
-      <p class="font-semibold">We can't find the internet</p>
-      <p>
-    Attempting to reconnect
-    <span class="hero-arrow-path ml-1 size-3 motion-safe:animate-spin" data-phx-id="m9-phx-GJvjiO3oZy1lLOeB"></span>
-  </p>
-    </div>
-    <div class="flex-1"></div>
-    <button type="button" class="group self-start cursor-pointer" aria-label="close">
-      <span class="hero-x-mark size-5 opacity-40 group-hover:opacity-70" data-phx-id="m10-phx-GJvjiO3oZy1lLOeB"></span>
-    </button>
-  </div>
-</div>
-
-  <div id="server-error" phx-click="[[&quot;push&quot;,{&quot;event&quot;:&quot;lv:clear-flash&quot;,&quot;value&quot;:{&quot;key&quot;:&quot;error&quot;}}],[&quot;hide&quot;,{&quot;time&quot;:200,&quot;to&quot;:&quot;#server-error&quot;,&quot;transition&quot;:[[&quot;transition-all&quot;,&quot;ease-in&quot;,&quot;duration-200&quot;],[&quot;opacity-100&quot;,&quot;translate-y-0&quot;,&quot;sm:scale-100&quot;],[&quot;opacity-0&quot;,&quot;translate-y-4&quot;,&quot;sm:translate-y-0&quot;,&quot;sm:scale-95&quot;]]}]]" role="alert" class="toast toast-top toast-end z-50" hidden="" phx-connected="[[&quot;hide&quot;,{&quot;time&quot;:200,&quot;to&quot;:&quot;#server-error&quot;,&quot;transition&quot;:[[&quot;transition-all&quot;,&quot;ease-in&quot;,&quot;duration-200&quot;],[&quot;opacity-100&quot;,&quot;translate-y-0&quot;,&quot;sm:scale-100&quot;],[&quot;opacity-0&quot;,&quot;translate-y-4&quot;,&quot;sm:translate-y-0&quot;,&quot;sm:scale-95&quot;]]}],[&quot;set_attr&quot;,{&quot;attr&quot;:[&quot;hidden&quot;,&quot;&quot;]}]]" phx-disconnected="[[&quot;show&quot;,{&quot;time&quot;:300,&quot;to&quot;:&quot;.phx-server-error #server-error&quot;,&quot;transition&quot;:[[&quot;transition-all&quot;,&quot;ease-out&quot;,&quot;duration-300&quot;],[&quot;opacity-0&quot;,&quot;translate-y-4&quot;,&quot;sm:translate-y-0&quot;,&quot;sm:scale-95&quot;],[&quot;opacity-100&quot;,&quot;translate-y-0&quot;,&quot;sm:scale-100&quot;]]}],[&quot;remove_attr&quot;,{&quot;attr&quot;:&quot;hidden&quot;}]]">
-  <div class="alert w-80 sm:w-96 max-w-80 sm:max-w-96 text-wrap alert-error">
-    
-    <span class="hero-exclamation-circle size-5 shrink-0" data-phx-id="m11-phx-GJvjiO3oZy1lLOeB"></span>
-    <div>
-      <p class="font-semibold">Something went wrong!</p>
-      <p>
-    Attempting to reconnect
-    <span class="hero-arrow-path ml-1 size-3 motion-safe:animate-spin" data-phx-id="m12-phx-GJvjiO3oZy1lLOeB"></span>
-  </p>
-    </div>
-    <div class="flex-1"></div>
-    <button type="button" class="group self-start cursor-pointer" aria-label="close">
-      <span class="hero-x-mark size-5 opacity-40 group-hover:opacity-70" data-phx-id="m13-phx-GJvjiO3oZy1lLOeB"></span>
-    </button>
-  </div>
-</div>
-</div></div>
-  <script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;3cac737e07094873868f0f253954623d&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
-
-</body></html>
+</body>
+</html>
