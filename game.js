@@ -98,14 +98,18 @@ function initGame() {
     const targetHex = target.hex;
 
     resultDiv.innerHTML = `
-        <p>Score: <strong>${score}/100</strong></p>
-        <div>
-        Your Guess
-        <div class="color-box" style="background:${guessHex}"></div>
+        <div class="score">
+            <span class="points">${score}</span><span class="max">/100</span>
         </div>
-        <div>
-        Actual Color
-        <div class="color-box" style="background:${targetHex}"></div>
+        <div class="color-comparison">
+            <div>
+                Your Guess
+                <div class="color-box" style="background:${guessHex}"></div>
+            </div>
+            <div>
+                Actual Color
+                <div class="color-box" style="background:${targetHex}"></div>
+            </div>
         </div>
     `;
 
