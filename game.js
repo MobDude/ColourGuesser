@@ -1,3 +1,8 @@
+import { DiscordSDK } from "@discord/embedded-app-sdk";
+const discordSdk = new DiscordSDK("Y1481374202866040986");
+await discordSdk.ready();
+console.log("Discord Activity ready!");
+
 let COLORS = [];
 
 fetch('colornames.json')
