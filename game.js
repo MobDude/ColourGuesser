@@ -1,12 +1,12 @@
-let discordSdk = null;
+// let discordSdk = null;
 
-if (window !== window.parent) {
-    discordSdk = new DiscordSDK("1481374202866040986");
+// if (window !== window.parent) {
+//     discordSdk = new DiscordSDK("1481374202866040986");
 
-    await discordSdk.ready();
+//     await discordSdk.ready();
 
-    console.log("Discord Activity ready!");
-}
+//     console.log("Discord Activity ready!");
+// }
 
 let COLORS = [];
 
