@@ -1,5 +1,5 @@
 import { DiscordSDK } from "@discord/embedded-app-sdk";
-const discordSdk = new DiscordSDK("Y1481374202866040986");
+const discordSdk = new DiscordSDK("1481374202866040986");
 await discordSdk.ready();
 console.log("Discord Activity ready!");
 
