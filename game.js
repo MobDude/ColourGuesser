@@ -17,7 +17,13 @@ function initGame() {
     let round = 0;
     let totalScore = 0;
     let roundHistory = [];
-    
+
+    const hexDisplay = document.getElementById("hex-display");
+    const colorName = document.getElementById("color-name");
+    const revealBtn = document.getElementById("reveal");
+    const nextBtn = document.getElementById("next");
+    const resultDiv = document.getElementById("result");
+
     const todayKey = getTodayKey();
     const savedGame = localStorage.getItem("colorGuess_" + todayKey);
 
@@ -58,11 +64,6 @@ function initGame() {
     color: "#808080"
     });
 
-    const hexDisplay = document.getElementById("hex-display");
-    const colorName = document.getElementById("color-name");
-    const revealBtn = document.getElementById("reveal");
-    const nextBtn = document.getElementById("next");
-    const resultDiv = document.getElementById("result");
 
     // live picker updates color of heading and hex display
     picker.on("color:change", (c) => {
@@ -254,7 +255,7 @@ function getPuzzleNumber() {
 
 function scoreToBar(score) {
 
-    const filled = Math.round(score / 10);
+    const filled = Math.floor(score / 10);
     const empty = 10 - filled;
 
     return "🟩".repeat(filled) + "⬜".repeat(empty);
