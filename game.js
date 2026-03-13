@@ -1,14 +1,11 @@
 let discordSdk = null;
 
-if (window.location !== window.parent.location) {
-    const { DiscordSDK } = await import(
-        "https://cdn.jsdelivr.net/npm/@discord/embedded-app-sdk/+esm"
-    );
-
+if (window !== window.parent) {
     discordSdk = new DiscordSDK("1481374202866040986");
+
     await discordSdk.ready();
 
-    console.log("Discord Activity ready");
+    console.log("Discord Activity ready!");
 }
 
 let COLORS = [];
