@@ -8,11 +8,44 @@ fetch('colornames.json')
   })
   .catch(err => console.error("Error loading colornames.json:", err));
 
+function getTodayKey() {
+    return new Date().toISOString().slice(0, 10);
+}
 function initGame() {
+    if (savedGame) {
+        const saved = JSON.parse(savedGame);
+
+        totalScore = saved.totalScore;
+        roundHistory = saved.roundHistory;
+
+        renderFinalScreen();
+        return;
+    }
+
     const TOTAL_ROUNDS = 5;
     let round = 0;
     let totalScore = 0;
+    let roundHistory = [];
+    const todayKey = getTodayKey();
+    const savedGame = localStorage.getItem("colorGuess_" + todayKey);
 
+    if (savedGame) {
+        const saved = JSON.parse(savedGame);
+
+        totalScore = saved.totalScore;
+        roundHistory = saved.roundHistory;
+
+        // hide game UI
+        document.getElementById("picker").style.display = "none";
+        document.getElementById("hex-display").style.display = "none";
+        document.getElementById("reveal").style.display = "none";
+        document.getElementById("next").style.display = "none";
+        document.getElementById("progress").style.display = "none";
+
+        renderFinalScreen();
+        return;
+    }
+    
     // --- progress dots ---
     const progress = document.getElementById("progress");
     for (let i = 0; i < TOTAL_ROUNDS; i++) {
@@ -90,6 +123,12 @@ function initGame() {
     const score = scoreColor(target.rgb, guess);
     totalScore += score;
 
+    roundHistory.push({
+        guess: { ...guess },
+        actual: target,
+        score: score
+    });
+
     // show color name and color squares
     colorName.textContent = target.name;
     colorName.style.color = target.hex;
@@ -131,11 +170,23 @@ function initGame() {
         nextBtn.style.display = "none";
     } else {
         // finished all rounds
-        colorName.textContent = "Finished!";
+         colorName.textContent = "Finished!";
         colorName.style.color = "#ffffff";
-        resultDiv.innerHTML = `<p>Total Score: <strong>${totalScore}/500</strong></p>`;
-        revealBtn.style.display = "none";
-        nextBtn.style.display = "none";
+        const todayKey = getTodayKey();
+        localStorage.setItem(
+        "colorGuess_" + getTodayKey(),
+        JSON.stringify({
+            totalScore,
+            roundHistory,
+            targets
+        })
+);
+
+
+    renderFinalScreen();
+
+    revealBtn.style.display = "none";
+    nextBtn.style.display = "none";
     }
     };
 
@@ -148,6 +199,98 @@ function initGame() {
     const b = bigint & 255;
     return { r, g, b };
     }
+
+    function renderFinalScreen() {
+
+    document.getElementById("picker").style.display = "none";
+    document.getElementById("hex-display").style.display = "none";
+    document.getElementById("reveal").style.display = "none";
+    document.getElementById("next").style.display = "none";
+    document.getElementById("progress").style.display = "none";
+    colorName.style.color = "white";
+    colorName.textContent = "Results";
+
+    const puzzleNumber = getPuzzleNumber();
+
+    let historyHtml = roundHistory.map((r, i) => {
+
+        const guessHex = `rgb(${r.guess.r},${r.guess.g},${r.guess.b})`;
+
+        return `
+        <div class="round-row">
+            <span class="round-num">${i+1}</span>
+
+            <div class="color-box" style="background:${guessHex}"></div>
+
+            <span class="arrow">→</span>
+
+            <div class="color-box" style="background:${r.actual.hex}"></div>
+
+            <span class="round-score">${r.score}/100</span>
+        </div>
+        `;
+
+    }).join("");
+
+    resultDiv.innerHTML = `
+        <div class="final-score">
+            <div class="puzzle-id">Daily Puzzle #${puzzleNumber}</div>
+
+            <div class="score">
+                <span class="points">${totalScore}</span>
+                <span class="max">/500</span>
+            </div>
+
+            <button id="share">Share Results</button>
+
+            <h3>Round History</h3>
+
+            <div class="round-history">
+                ${historyHtml}
+            </div>
+        </div>
+    `;
+
+    document.getElementById("share").onclick = shareResults;
+}
+
+function getPuzzleNumber() {
+    const start = new Date("2023-01-01");
+    const today = new Date();
+    return Math.floor((today - start) / (1000*60*60*24));
+}
+
+function scoreToBar(score) {
+
+    const filled = Math.round(score / 10);
+    const empty = 10 - filled;
+
+    return "🟩".repeat(filled) + "⬜".repeat(empty);
+}
+
+function generateShareText() {
+
+    const puzzleNumber = getPuzzleNumber();
+
+    let text = `ColorGuess #${puzzleNumber} ${totalScore}/500\n`;
+
+    roundHistory.forEach(r => {
+        text += `${scoreToBar(r.score)} ${r.score}/100\n`;
+    });
+
+    return text;
+}
+
+function shareResults() {
+
+    const text = generateShareText();
+
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById("share");
+        btn.textContent = "Copied!";
+        setTimeout(() => btn.textContent = "Share Results", 2000);
+    });
+}
 
     // --- initialize first color ---
     colorName.textContent = targets[0].name;

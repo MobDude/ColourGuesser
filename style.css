@@ -135,3 +135,33 @@ button:active {
   gap: 8px;
   font-size: 1rem;
 }
+
+.round-history {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.round-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+}
+
+.round-num {
+  opacity: 0.6;
+  width: 20px;
+}
+
+.arrow {
+  opacity: 0.6;
+}
+
+.round-score {
+  margin-left: auto;
+  font-weight: 600;
+}
