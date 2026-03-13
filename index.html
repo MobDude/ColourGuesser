@@ -1,35 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>ColorGuesser</title>
-<link rel="stylesheet" href="style.css">
-<script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
-</head>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>ColorGuesser</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
 
-<body>
+    <body>
 
-<div class="container">
+        <div class="container">
 
-<div id="progress"></div>
+            <div id="progress"></div>
+            <h2 id="color-name" class="text-3xl font-bold tracking-tight text-center px-2 transition-colors duration-75 leading-tight" style="color: #808080">Guess The Colour</h2>
+            <div id="picker"></div>
+            <p id="hex-display">#000000</p>
+            <button id="reveal">Reveal</button>
+            <div id="result"></div>
+            <button id="next" style="display:none;">Next Color</button>
+        </div>
 
-<h2 id="color-name" class="text-3xl font-bold tracking-tight text-center px-2 transition-colors duration-75 leading-tight" style="color: #808080">Guess The Colour</h2>
+        <script src="/iro.min.js"></script>
+        <script type="module" src="game.js"></script>
 
-<div id="picker"></div>
-
-<p id="hex-display">#000000</p>
-
-<button id="reveal">Reveal</button>
-
-<div id="result"></div>
-
-<button id="next" style="display:none;">Next Color</button>
-
-</div>
-
-<script src="colornames.json"></script>
-<script src="/iro.min.js"></script>
-<script type="module" src="game.js"></script>
-
-</body>
+    </body>
 </html>
