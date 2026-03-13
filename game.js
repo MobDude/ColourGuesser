@@ -12,20 +12,12 @@ function getTodayKey() {
     return new Date().toISOString().slice(0, 10);
 }
 function initGame() {
-    if (savedGame) {
-        const saved = JSON.parse(savedGame);
-
-        totalScore = saved.totalScore;
-        roundHistory = saved.roundHistory;
-
-        renderFinalScreen();
-        return;
-    }
 
     const TOTAL_ROUNDS = 5;
     let round = 0;
     let totalScore = 0;
     let roundHistory = [];
+    
     const todayKey = getTodayKey();
     const savedGame = localStorage.getItem("colorGuess_" + todayKey);
 
